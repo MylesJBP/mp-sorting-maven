@@ -1,16 +1,12 @@
 package edu.grinnell.csc207.sorting;
 
-import edu.grinnell.csc207.util.ArrayUtils;
-
 import java.util.Arrays;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.junit.jupiter.api.Assertions.fail;
 import org.junit.jupiter.api.Test;
+
+import edu.grinnell.csc207.util.ArrayUtils;
 
 /**
  * Tests of Sorter objects. Please do not use this class directly.
@@ -120,4 +116,17 @@ public class TestSorter {
     ArrayUtils.permute(original);
     assertSorts(expected, original, intSorter);
   } // permutedIntegers
+
+  /**
+   * Ensure that a one element array returns the same array.
+   */
+  @Test
+  public void OneElementStringTest() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = { "foxtrot" };
+    String[] expected = { "foxtrot" };
+    assertSorts(expected, original, stringSorter);
+  } // OneElementStringTest
 } // class TestSorter

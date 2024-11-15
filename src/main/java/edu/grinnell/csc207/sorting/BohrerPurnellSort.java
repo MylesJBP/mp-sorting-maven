@@ -3,7 +3,7 @@ package edu.grinnell.csc207.sorting;
 import java.util.Comparator;
 
 /**
- * Something that sorts using selection sort.
+ * Something that sorts using my own sorting algorithm.
  *
  * @param <T>
  *   The types of values that are sorted.
@@ -11,7 +11,7 @@ import java.util.Comparator;
  * @author Samuel A. Rebelsky
  */
 
-public class SelectionSorter<T> implements Sorter<T> {
+public class BohrerPurnellSort<T> implements Sorter<T> {
   // +--------+------------------------------------------------------
   // | Fields |
   // +--------+
@@ -32,16 +32,16 @@ public class SelectionSorter<T> implements Sorter<T> {
    *   The order in which elements in the array should be ordered
    *   after sorting.
    */
-  public SelectionSorter(Comparator<? super T> comparator) {
+  public BohrerPurnellSort(Comparator<? super T> comparator) {
     this.order = comparator;
-  } // SelectionSorter(Comparator)
+  } // Quicksorter(Comparator)
 
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
 
   /**
-   * Sort an array in place using selection sort.
+   * Sort an array in place using Quicksort.
    *
    * @param values
    *   an array to sort.
@@ -55,20 +55,6 @@ public class SelectionSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    int cur = 0;
-    T temp;
-    int smallIndex;
-    while (cur < values.length) {
-      smallIndex = cur;
-      for (int i = cur+1; i < values.length; i++) {
-        if (this.order.compare(values[i], values[smallIndex]) < 0) {
-          smallIndex = i;
-        } // if
-      } // for
-      temp = values[smallIndex];
-      values[smallIndex] = values[cur];
-      values[cur] = temp;
-      cur++;
-    } // while
+    // STUB
   } // sort(T[])
-} // class SelectionSorter
+} // class Quicksorter
