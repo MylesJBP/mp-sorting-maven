@@ -1,6 +1,7 @@
 package edu.grinnell.csc207.sorting;
 
 import java.util.Comparator;
+import java.util.Random;
 
 /**
  * Something that sorts using Quicksort.
@@ -39,6 +40,35 @@ public class Quicksorter<T> implements Sorter<T> {
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
+  
+  public void quicksort(T[] values, int lb, int ub) {
+    if (ub - lb < 0) {
+      return;
+    } // if
+    Random rand = new Random();
+    int pivot = rand.nextInt(lb, ub + 1);
+    T temp = values[lb];
+    values[lb] = values[pivot];
+    values[pivot] = temp;
+    int i = lb + 1;
+    int j = ub;
+    while (i <= j) {
+      if (this.order.compare(values[i], values[lb]) <= 0) {
+        i++;
+      } else if (this.order.compare(values[i], values[lb]) > 0) {
+        temp = values[j];
+        values[j] = values[i];
+        values[i] = temp;
+        j--;
+      } // if/else
+    } // while
+    temp = values[j];
+    values[j] = values[lb];
+    values[lb] = temp;
+
+    quicksort(values, lb, j - 1);
+    quicksort(values, i, ub);
+  } // quicksort
 
   /**
    * Sort an array in place using Quicksort.
@@ -55,6 +85,12 @@ public class Quicksorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    if (values.length <= 1) {
+      return;
+    } // if
+    int ub = values.length - 1;
+    int lb = 0;
+
+    quicksort(values, lb, ub);
   } // sort(T[])
 } // class Quicksorter
