@@ -39,6 +39,35 @@ public class MergeSorter<T> implements Sorter<T> {
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
+  /**
+   * Sorts the elements from two arrays into the original array.
+   * @param values the original array.
+   * @param leftHalf a sorted sub-array.
+   * @param rightHalf a sorted sub-array.
+   */
+  public void mergeSort(T[] values, T[] leftHalf, T[] rightHalf) {
+    int rightIndex = 0;
+    int leftIndex = 0;
+    int valIndex = 0;
+    while (rightIndex < rightHalf.length || leftIndex < leftHalf.length) {
+      if (rightIndex < rightHalf.length && leftIndex < leftHalf.length) {
+        if (this.order.compare(leftHalf[leftIndex], rightHalf[rightIndex]) <= 0) {
+          values[valIndex] = leftHalf[leftIndex];
+          leftIndex++;
+        } else {
+          values[valIndex] = rightHalf[rightIndex];
+          rightIndex++;
+        } // if/else
+      } else if (rightIndex >= rightHalf.length) {
+        values[valIndex] = leftHalf[leftIndex];
+        leftIndex++;
+      } else {
+        values[valIndex] = rightHalf[rightIndex];
+        rightIndex++;
+      } // if/else
+      valIndex++;
+    } // while
+  } // mergeSort()
 
   /**
    * Sort an array in place using merge sort.
@@ -55,6 +84,22 @@ public class MergeSorter<T> implements Sorter<T> {
    */
   @Override
   public void sort(T[] values) {
-    // STUB
+    if (values.length <= 1) {
+      return;
+    } // if
+    int midpoint = values.length / 2;
+    T[] leftHalf = (T[]) new Object[midpoint];
+    T[] rightHalf = (T[]) new Object[values.length - midpoint];
+    // create the right and left lists to sort
+    for (int i = 0; i < midpoint; i++) {
+      leftHalf[i] = values[i];
+    } // for
+    for (int i = midpoint; i < values.length; i++) {
+      rightHalf[i - midpoint] = values[i];
+    }
+    sort(leftHalf);
+    sort(rightHalf);
+
+    mergeSort(values, leftHalf, rightHalf);
   } // sort(T[])
 } // class MergeSorter
