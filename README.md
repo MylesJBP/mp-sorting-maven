@@ -10,6 +10,9 @@ Authors
 Acknowledgements
 https://rebelsky.cs.grinnell.edu/Courses/CSC207/2024Fa/readings/quicksort.html
 https://rebelsky.cs.grinnell.edu/Courses/CSC207/2024Fa/eboards/eboard20-2.html
+https://openai.com/index/chatgpt/
+https://rebelsky.cs.grinnell.edu/Courses/CSC207/2024Fa/readings/mergesort.html
+https://rebelsky.cs.grinnell.edu/Courses/CSC207/2024Fa/readings/sorting.html
 * _Forthcoming_.
 
 This code may be found at <https://github.com/MylesJBP/mp-sorting-maven>. The original code may be found at <https://github.com/Grinnell-CSC207/mp-sorting-maven>.
