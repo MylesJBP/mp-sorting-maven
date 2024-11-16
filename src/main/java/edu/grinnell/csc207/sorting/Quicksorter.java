@@ -10,6 +10,7 @@ import java.util.Random;
  *   The types of values that are sorted.
  *
  * @author Samuel A. Rebelsky
+ * @author Myles Bohrer-Purnell
  */
 
 public class Quicksorter<T> implements Sorter<T> {
@@ -40,7 +41,13 @@ public class Quicksorter<T> implements Sorter<T> {
   // +---------+-----------------------------------------------------
   // | Methods |
   // +---------+
-  
+  /**
+   * Recursively quicksorts an array from a lower
+   * bound to an upper bound of an array.
+   * @param values // original array.
+   * @param lb // lower bound of interest.
+   * @param ub // upper bound of interest.
+   */
   public void quicksort(T[] values, int lb, int ub) {
     if (ub - lb < 0) {
       return;

@@ -13,7 +13,7 @@ import edu.grinnell.csc207.util.ArrayUtils;
  * Rather, you should subclass it and initialize stringSorter and
  * intSorter in a static @BeforeAll method.
  *
- * @author Your Name
+ * @author Myles Bohrer-Purnell
  * @uathor Samuel A. Rebelsky
  */
 public class TestSorter {
@@ -129,4 +129,57 @@ public class TestSorter {
     String[] expected = { "foxtrot" };
     assertSorts(expected, original, stringSorter);
   } // OneElementStringTest
+
+  /**
+   * Ensure that an array with all of the same elements sorts correctly.
+   */
+  @Test
+  public void AllSameStringTest() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = { "a", "a", "a", "a", "a" };
+    String[] expected = { "a", "a", "a", "a", "a" };
+    assertSorts(expected, original, stringSorter);
+  } // AllSameStringTest
+
+  /**
+   * Ensure that an array with all of the same elements sorts correctly.
+   */
+  @Test
+  public void AllSameIntTest() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = { 1, 1, 1, 1, 1 };
+    Integer[] expected = { 1, 1, 1, 1, 1 };
+    assertSorts(expected, original, intSorter);
+  } // AllSameIntTest
+
+  /**
+   * Ensure that an array with alternating ordering of larger-smaller
+   * elements sorts correctly.
+   */
+  @Test
+  public void AlternatingIntTest() {
+    if (null == intSorter) {
+      return;
+    } // if
+    Integer[] original = { 10, 5, 11, 6, 12, 7, 13, 8, 14, 9, 15 };
+    Integer[] expected = { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15 };
+    assertSorts(expected, original, intSorter);
+  } // AlternatingIntTest
+
+  /**
+   * Ensure that an array with two elements sorts correctly.
+   */
+  @Test
+  public void TwoElementStringTest() {
+    if (null == stringSorter) {
+      return;
+    } // if
+    String[] original = { "b", "a" };
+    String[] expected = { "a", "b" };
+    assertSorts(expected, original, stringSorter);
+  } // TwoElementStringTest
 } // class TestSorter

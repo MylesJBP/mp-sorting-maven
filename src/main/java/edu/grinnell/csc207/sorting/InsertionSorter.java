@@ -58,11 +58,11 @@ public class InsertionSorter<T> implements Sorter<T> {
   public void sort(T[] values) {
     int cur = 1;
     T temp;
-    while(cur < values.length) {
+    while (cur < values.length) {
       temp = values[cur];
-      for (int i = cur-1; i >= 0; i--) {
+      for (int i = cur - 1; i >= 0; i--) {
         if (this.order.compare(temp, values[i]) < 0) {
-          values[i+1] = values[i];
+          values[i + 1] = values[i];
           values[i] = temp;
         } else {
           break;

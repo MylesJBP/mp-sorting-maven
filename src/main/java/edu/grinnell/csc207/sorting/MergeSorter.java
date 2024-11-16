@@ -9,6 +9,7 @@ import java.util.Comparator;
  *   The types of values that are sorted.
  *
  * @author Samuel A. Rebelsky
+ * @author Myles Bohrer-Purnell
  */
 
 public class MergeSorter<T> implements Sorter<T> {
@@ -96,7 +97,7 @@ public class MergeSorter<T> implements Sorter<T> {
     } // for
     for (int i = midpoint; i < values.length; i++) {
       rightHalf[i - midpoint] = values[i];
-    }
+    } // for
     sort(leftHalf);
     sort(rightHalf);
 
